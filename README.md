@@ -1,4 +1,4 @@
-# ANYmal C Robot Description (URDF)
+# ANYmal C Robot Description (URDF) - humble
 ## Overview
 
 This package contains a simplified robot description (URDF) of the [ANYmal C robot](https://www.anybotics.com/anymal) developed by [ANYbotics](https://www.anybotics.com).
@@ -16,16 +16,10 @@ This software is released under a [BSD 3-Clause license](LICENSE).
 
 ## Usage
 
-Load the ANYmal description to the ROS parameter server:
+To visualize and debug the robot description, start the standalone visualization (note that you have to provide the following additional dependencies: `joint_state_publisher`, `robot_state_publisher`, `rviz2`):
 
-    roslaunch anymal_c_simple_description load.launch
-
-To visualize and debug the robot description, start the standalone visualization (note that you have to provide the following additional dependencies: `joint_state_publisher`, `robot_state_publisher`, `rviz`):
-
-    roslaunch anymal_c_simple_description standalone.launch
+    ros2 launch anymal_c_simple_description standalone.launch.py
 
 ### Launch files
 
-* **`load.launch`:** Loads the URDF to the parameter server. Meant to be included in higher level launch files.
-
-* **`standalone.launch`:** A standalone launch file that starts RViz and a joint state publisher to debug the description.
+* **`standalone.launch.py`:** A standalone launch file that starts RViz and a joint state publisher to debug the description.
