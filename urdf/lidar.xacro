@@ -16,7 +16,7 @@
 
     <xacro:macro name="lidar_macro" params="max_range samples">
         <gazebo reference="base">
-            <sensor name="laser" type="ray">
+            <sensor name="laser_${max_range}_${samples}" type="ray">
                 <pose> 0 0 .2 0 0 0 </pose>
                 <visualize>false</visualize>
                 <update_rate>10</update_rate>
@@ -44,6 +44,12 @@
     <xacro:lidar_macro max_range="5" samples="360"></xacro:lidar_macro>
     <xacro:lidar_macro max_range="10" samples="360"></xacro:lidar_macro>
     <xacro:lidar_macro max_range="15" samples="360"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="20" samples="360"></xacro:lidar_macro>
+
+    <xacro:lidar_macro max_range="5" samples="180"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="10" samples="180"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="15" samples="180"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="20" samples="180"></xacro:lidar_macro>
 
 
 
