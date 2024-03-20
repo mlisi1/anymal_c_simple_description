@@ -8,7 +8,7 @@
         </ros>
         <body_name>base</body_name>
         <frame_name>map</frame_name>
-        <update_rate>10.0</update_rate>
+        <update_rate>5.0</update_rate>
         <xyz_offset>0.0 0.0 -.5</xyz_offset>
         <rpy_offset>0 0 0</rpy_offset>
         </plugin>
@@ -19,7 +19,7 @@
             <sensor name="laser_${max_range}_${samples}" type="ray">
                 <pose> 0 0 .2 0 0 0 </pose>
                 <visualize>false</visualize>
-                <update_rate>10</update_rate>
+                <update_rate>5</update_rate>
                 <ray>
                     <scan>
                         <horizontal>
@@ -45,11 +45,36 @@
     <xacro:lidar_macro max_range="10" samples="360"></xacro:lidar_macro>
     <xacro:lidar_macro max_range="15" samples="360"></xacro:lidar_macro>
     <xacro:lidar_macro max_range="20" samples="360"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="7" samples="360"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="13" samples="360"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="17" samples="360"></xacro:lidar_macro>
+
 
     <xacro:lidar_macro max_range="5" samples="180"></xacro:lidar_macro>
     <xacro:lidar_macro max_range="10" samples="180"></xacro:lidar_macro>
     <xacro:lidar_macro max_range="15" samples="180"></xacro:lidar_macro>
     <xacro:lidar_macro max_range="20" samples="180"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="7" samples="180"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="13" samples="180"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="17" samples="180"></xacro:lidar_macro>
+
+
+    <xacro:lidar_macro max_range="5" samples="1600"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="10" samples="1600"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="15" samples="1600"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="20" samples="1600"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="7" samples="1600"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="13" samples="1600"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="17" samples="1600"></xacro:lidar_macro>
+
+
+    <xacro:lidar_macro max_range="5" samples="800"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="10" samples="800"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="15" samples="800"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="20" samples="800"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="7" samples="800"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="13" samples="800"></xacro:lidar_macro>
+    <xacro:lidar_macro max_range="17" samples="800"></xacro:lidar_macro>
 
 
 
