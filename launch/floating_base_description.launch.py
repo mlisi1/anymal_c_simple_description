@@ -34,7 +34,7 @@ def generate_launch_description():
             {"ignore_timestamp": True},
             {'use_sim_time': use_sim_time}
             ],
-        # remappings=(("robot_description", "robot_description")),
+        remappings=(("robot_description", "floating_base_description")),
     )
 
     return LaunchDescription(
