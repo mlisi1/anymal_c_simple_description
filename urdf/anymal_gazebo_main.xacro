@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="anymal">
+
+
+    <xacro:arg name="remove_shank_collisions" default="True"/>
+    <xacro:property name="remove_shank_collisions" default="$(arg remove_shank_collisions)"/>
+
+
+    <xacro:macro name="ros2_control_joint" params="joint_name">
+        <ros2_control name="${joint_name}" type="system">
+            <hardware>
+                <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+            </hardware>
+
+            <joint name="${joint_name}">
+                <command_interface name="effort"/>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+                <state_interface name="effort"/>
+            </joint>
+
+        </ros2_control> 
+    </xacro:macro>
+
+
+
+    <xacro:macro name="foot_contact" params="leg rate">
+        <gazebo reference="${leg}_FOOT">
+        <sensor name="${leg}_FOOT_contct_sensor" type="contact">
+            <always_on>true</always_on>
+            <update_rate>${rate}</update_rate>
+            <contact>
+       
+                <collision>${leg}_SHANK_fixed_joint_lump__${leg}_FOOT_collision_3</collision>
+
+            </contact>
+            <plugin name="${leg}_FOOT_bumper" filename="libgazebo_ros_bumper.so">
+                <ros>
+                    <remapping>bumper_states:=/contact_force_sensors/${leg}</remapping>
+                </ros>
+                <frame_name>world</frame_name>
+            </plugin>
+        </sensor>
+        </gazebo>
+    </xacro:macro>
+
+
+    <xacro:include filename="anymal_main.xacro" />
+
+    <gazebo>
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <robot_param>robot_description</robot_param>
+            <parameters>$(find anymal_c_config)/config/ros_control.yaml</parameters>
+        </plugin>
+    </gazebo>
+
+
+    <xacro:ros2_control_joint joint_name="LF_HAA"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="LF_HFE"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="LF_KFE"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="RF_HAA"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="RF_HFE"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="RF_KFE"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="LH_HAA"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="LH_HFE"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="LH_KFE"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="RH_HAA"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="RH_HFE"></xacro:ros2_control_joint>
+    <xacro:ros2_control_joint joint_name="RH_KFE"></xacro:ros2_control_joint>
+
+    <xacro:foot_contact leg="LF" rate="500.0"></xacro:foot_contact>
+    <xacro:foot_contact leg="RF" rate="500.0"></xacro:foot_contact>
+    <xacro:foot_contact leg="LH" rate="500.0"></xacro:foot_contact>
+    <xacro:foot_contact leg="RH" rate="500.0"></xacro:foot_contact>
+
+    
+
+    <gazebo>
+        <plugin filename="libgazebo_ros_p3d.so" name="p3d_base_controller">
+        <ros>
+            <argument>odom:=base</argument>
+        </ros>
+        <body_name>base</body_name>
+        <frame_name>world</frame_name>
+        <update_rate>500.0</update_rate>
+        <xyz_offset>0.0 0.0 0.0</xyz_offset>
+        <rpy_offset>0 0 0</rpy_offset>
+        </plugin>
+    </gazebo>
+    
+</robot>
