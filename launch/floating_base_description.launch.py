@@ -8,9 +8,14 @@ import xacro
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
 from launch.substitutions import Command, LaunchConfiguration
+import re
 
 
 def generate_launch_description():
+
+    def remove_comments(text):
+        pattern = r'<!--(.*?)-->'
+        return re.sub(pattern, '', text, flags=re.DOTALL)
 
     use_sim_time = LaunchConfiguration("use_sim_time")
     description_path = LaunchConfiguration("description_path")
@@ -22,7 +27,7 @@ def generate_launch_description():
 
     declare_description_path = DeclareLaunchArgument(name="description_path", default_value=default_model_path, description="Absolute path to robot urdf file")
    
-    xacro_content = xacro.process_file(default_model_path).toxml()
+    xacro_content = remove_comments(xacro.process_file(default_model_path).toxml())
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
