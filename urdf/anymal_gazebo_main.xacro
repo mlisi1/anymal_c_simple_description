@@ -68,10 +68,10 @@
     <xacro:ros2_control_joint joint_name="RH_HFE"></xacro:ros2_control_joint>
     <xacro:ros2_control_joint joint_name="RH_KFE"></xacro:ros2_control_joint>
 
-    <xacro:foot_contact leg="LF" rate="500.0"></xacro:foot_contact>
-    <xacro:foot_contact leg="RF" rate="500.0"></xacro:foot_contact>
-    <xacro:foot_contact leg="LH" rate="500.0"></xacro:foot_contact>
-    <xacro:foot_contact leg="RH" rate="500.0"></xacro:foot_contact>
+    <xacro:foot_contact leg="LF" rate="100.0"></xacro:foot_contact>
+    <xacro:foot_contact leg="RF" rate="100.0"></xacro:foot_contact>
+    <xacro:foot_contact leg="LH" rate="100.0"></xacro:foot_contact>
+    <xacro:foot_contact leg="RH" rate="100.0"></xacro:foot_contact>
 
     
 
@@ -82,7 +82,7 @@
         </ros>
         <body_name>base</body_name>
         <frame_name>world</frame_name>
-        <update_rate>500.0</update_rate>
+        <update_rate>100.0</update_rate>
         <xyz_offset>0.0 0.0 0.0</xyz_offset>
         <rpy_offset>0 0 0</rpy_offset>
         </plugin>
