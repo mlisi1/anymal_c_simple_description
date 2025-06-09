@@ -73,6 +73,20 @@
     <xacro:foot_contact leg="LH" rate="100.0"></xacro:foot_contact>
     <xacro:foot_contact leg="RH" rate="100.0"></xacro:foot_contact>
 
+
+    <gazebo reference="base">
+        <provideFeedback>true</provideFeedback>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="ft_sensor" filename="libgazebo_ros_ft_sensor.so">
+            <updateRate>100.0</updateRate>
+            <topicName>ft_sensor_topic</topicName>
+            <body_name>base</body_name>
+            <joint_name>virtual</joint_name>
+        </plugin>
+    </gazebo>
+
     
 
     <gazebo>
