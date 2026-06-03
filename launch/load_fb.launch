@@ -3,7 +3,7 @@
 <launch>
 
   <!-- Give the robot description parameter a name -->
-  <arg name="description_name"           default="anymal_description"/>
+  <arg name="description_name"           default="floating_base_description"/>
   <!-- Set robot description path -->
   <arg name="description_file"           default="$(find anymal_c_simple_description)/urdf/anymal_floating_base.urdf"/>
 
